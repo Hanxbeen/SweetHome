@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.happyhouse.model.repo.VillaRepo">
+
+	<select id="getSido" parameterType="string"
+		resultType="villaInfo">
+		select si
+		from villadeal
+	</select>
+
+	<select id="getGugunInSido" parameterType="string"
+		resultType="villaInfo">
+		select gugun
+		from villadeal
+		where si=#{si}
+	</select>
+
+	<select id="getDongInGugun" parameterType="string"
+		resultType="villaInfo">
+		select dong
+		from villadeal
+		where gugun=#{gugun}
+	</select>
+
+	<select id="getAllVilla" parameterType="int" resultType="villaInfo">
+		select *
+		from villadeal
+		limit #{page}, 15;
+	</select>
+
+	<select id="getVillaInDong" resultType="villaInfo">
+		select *
+		from villadeal
+		where dong=#{dong}
+	</select>
+
+	<select id="getVillaName" resultType="villaInfo">
+		select *
+		from villadeal
+		where name like concat("%", #{villaName}, "%")
+	</select>
+
+</mapper>

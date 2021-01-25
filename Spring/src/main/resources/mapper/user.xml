@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.ssafy.happyhouse.model.repo.UserRepo">
+
+	<select id="select" parameterType="string" resultType="user">
+		select * 
+		from user 
+		where userid=#{userid}
+	</select>
+	
+	<select id="selectAll" resultType="user">
+		select * 
+		from user;
+	</select>
+
+	
+	<update id="update" parameterType="user">
+		update user
+		set name=#{name}, number=#{number}, address=#{address}
+		where userid=#{userid}
+	</update>
+	
+	<delete id="delete" parameterType="string">
+		delete from user 
+		where userid=#{userid}
+	</delete>
+		
+	<insert id="insert" parameterType="user">
+		insert into user(userid, pass, name, number, address)
+		values(#{userid}, #{pass}, #{name}, #{number}, #{address})
+	</insert>
+	
+	<select id="login" parameterType="user" resultType="user">
+		select userid, name, number, address, roll
+		from user
+		where userid=#{userid} and pass=#{pass}
+	</select>
+
+</mapper>

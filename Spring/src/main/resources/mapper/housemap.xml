@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.happyhouse.model.repo.HouseMapRepo">
+
+	<select id="getSido" parameterType="string"
+		resultType="houseInfo">
+		select si
+		from aptdeal
+	</select>
+
+	<select id="getGugunInSido" parameterType="string"
+		resultType="houseInfo">
+		select gugun
+		from aptdeal
+		where si=#{si}
+	</select>
+
+	<select id="getDongInGugun" parameterType="string"
+		resultType="houseInfo">
+		select dong
+		from aptdeal
+		where gugun=#{gugun}
+	</select>
+
+	<select id="getAllApt" resultType="houseInfo">
+		select *
+		from aptdeal
+	</select>
+
+	<select id="getAptInDong" resultType="houseInfo">
+		select *
+		from aptdeal
+		where
+		dong=#{dong}
+	</select>
+
+	<select id="getAptName" resultType="houseInfo">
+		select name
+		from aptdeal
+	</select>
+
+</mapper>

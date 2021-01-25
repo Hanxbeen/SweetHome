@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.ssafy.happyhouse.model.repo.AnswerRepo">
+
+	<select id="select" parameterType="int" resultType="Answer">
+		select * 
+		from answer 
+		where noq=#{noq}
+	</select>
+	
+	<select id="selectByUser" parameterType="String" resultType="Answer">
+		select * 
+		from answer 
+		where userid like concat("%", #{userid}, "%")
+	</select>
+	
+	<select id="selectByNoq" parameterType="int" resultType="Answer">
+		select * 
+		from answer 
+		where noq=#{noq}
+	</select>
+	
+	<select id="selectAll" resultType="Answer">
+		select * 
+		from answer;
+	</select>
+	
+	<insert id="insert" parameterType="Answer">
+		insert into answer(noq, userid, name, text)
+		values(#{noq}, #{userid}, #{name}, #{text})
+	</insert>
+	
+	<update id="update" parameterType="Answer">
+		update answer
+		set noq=#{noq}, userid=#{userid}, name=#{name}, text=#{text}
+		where noa=#{noa}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete from answer 
+		where noa=#{noa}
+	</delete>
+		<delete id="deleteByNoq" parameterType="int">
+		delete from answer 
+		where noq=#{noq}
+	</delete>
+
+</mapper>
+	
