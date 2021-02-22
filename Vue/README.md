@@ -1,1 +1,1 @@
-SSAFY 공통
+SSAFY 공통프로젝트
